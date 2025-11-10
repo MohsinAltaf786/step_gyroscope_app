@@ -50,15 +50,20 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: (provider.myModel?.data?.items??[]).length,
             itemBuilder:(context,index){
               final data=(provider.myModel?.data?.items??[])[index];
-          return Column(
-            children: [
-           Text('Title ${data.title}'),
-              Text('id ${data.id}'),
-              Text('location ${data.location?.city}'),
+       if(provider.loading==true){
+         return Center(child: CircularProgressIndicator(),);
+       }
+       else{
+        return Column(
+           children: [
+             Text('Title ${data.title}'),
+             Text('id ${data.id}'),
+             Text('location ${data.location?.city}'),
 
 
-            ],
-          );
+           ],
+         );
+       }
         });}),
       )
     );
